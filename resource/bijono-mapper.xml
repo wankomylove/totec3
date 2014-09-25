@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="Gakkyoku">
+<resultMap type="Gakkyoku" id="resultMap">
+	<result column="id" property="id" />
+	<result column="artist_id" property="artist_id" />
+	<result column="outline" property="outline" />
+	<result column="title" property="title" />
+</resultMap>
+
+<insert id="insert" parameterType="UserInfo">
+insert into USER_INFO
+(USER_ID, USER_NAME, UPD_DATE, DEL_FLG)
+values (#{id}, #{userName}, #{updDate}, #{delFlg})
+</insert>
+<delete id="delete" parameterType="int">
+delete from USER_INFO
+where USER_ID = #{id}
+</delete>
+<delete id="deleteAll">
+delete from USER_INFO
+</delete>
+</mapper>
