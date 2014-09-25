@@ -18,20 +18,16 @@ import dto.Gakkyoku;
 @WebServlet("/api/musics")
 public class GetAllController extends HttpServlet {
     
-	private MusicService musicService;
-	public GetAllController() {
-		if(musicService == null){
-			musicService = new MusicService();
-		}
-    }
+	private static MusicService musicService;
     
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("here!");
 		String id = req.getParameter("id");
 		if(id == null||id.isEmpty()){
 			System.out.println("not exist id!");
 		}
-		
+		if(musicService == null){
+			musicService = new MusicService();
+		}
 		Gakkyoku kyoku = musicService.get(id);
 		if(kyoku == null){
 			
@@ -47,5 +43,4 @@ public class GetAllController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-
 }

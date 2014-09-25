@@ -20,14 +20,16 @@ public class MusicDao {
 	}
 	
 	private SqlSession getSession() {
-	try {
-	if(session == null) {
-		Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
-		session = new SqlSessionFactoryBuilder().build(reader).openSession();
-	}
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
+		try {
+			if(session == null) {
+				Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+				System.out.println("READ:"+reader);
+				session = new SqlSessionFactoryBuilder().build(reader).openSession();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("sess:"+session);
 	return session;
 	}
 }

@@ -12,7 +12,7 @@ public class MusicService {
 	}
 	
 	public Gakkyoku get(String id){
-		return new Gakkyoku();
+		return dao.get(id);
 	}
 	
 }
